@@ -14,7 +14,6 @@ const TaskMaster = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Please enter a valid user ID"],
         minlength: [8, "Password must be more 8 characters long"]
     },
     imageUrl: {
