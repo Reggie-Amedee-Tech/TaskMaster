@@ -38,7 +38,7 @@ const TaskForm = () => {
                 <input type="date" onChange={(e)=> setDate(e.target.value)} value={date} required pattern="\d{4}-d{2}-\d{2}"/>
             </p>
             </div>
-        <input type="submit"/>
+        <button type="submit">Submit Task!</button>
             
         </form>
 
