@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import TaskFormCSS from './TaskForm.module.css'
 import axios from 'axios'
 
 const TaskForm = () => {
@@ -20,6 +21,10 @@ const TaskForm = () => {
 
     return(
         <form onSubmit={onSubmitHandler}>
+            <h1>Add New Task!</h1>
+            <div className={TaskFormCSS.taskFormBox}>
+
+            
             <div>
             <p>
                 <label>Task Name: <br/></label>
@@ -39,6 +44,7 @@ const TaskForm = () => {
             </p>
             </div>
         <button type="submit">Submit Task!</button>
+        </div>
             
         </form>
 

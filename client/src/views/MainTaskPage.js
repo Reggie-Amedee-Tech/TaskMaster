@@ -4,9 +4,22 @@ import TaskList from '../components/TaskList'
 const MainTaskPage = () => {
 
     return(
-        <div>
+        <div style={{display: 'flex',
+        justifyContent: 'space-around',
+        flexWrap: 'wrap'}}>
+            <div style={{borderStyle: 'solid',
+            width: '700px',
+            height: '600px'
+        }}>
             <TaskForm/>
+            </div>
+            <div style={{borderStyle: 'solid',
+            width: '700px',
+            height: '600px'
+        }}>
             <TaskList/>
+            </div>
+            
         </div>
         
         

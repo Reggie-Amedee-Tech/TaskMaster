@@ -28,3 +28,9 @@ module.exports.taskUpdate = (request, response) => {
     .then(updateTask=> response.json(updateTask))
     .catch(err=> response.json(err))
 }
+
+module.exports.taskDelete = (request, response) => {
+    Task.deleteOne({_id: request.params.id})
+    .then(deleteConfirmation=> response.json(deleteConfirmation))
+    .catch(err=> response.json(err))
+}
