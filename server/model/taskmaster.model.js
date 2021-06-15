@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TaskMaster = new mongoose.Schema({
+const TaskMasterSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please enter your full name"]
@@ -21,3 +21,7 @@ const TaskMaster = new mongoose.Schema({
         required: [true, "Please enter a valid user ID"]
     }
 })
+
+const TaskMaster = mongoose.model('TaskMaster', TaskMasterSchema)
+
+module.exports = TaskMaster;
