@@ -1,5 +1,4 @@
 require('dotenv').config()
-
 const express = require('express');
 const app = express();
 const cors = require('cors')
@@ -12,5 +11,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 require('./routes/task.route')(app)
+require('./routes/taskMaster.route')(app)
 
 app.listen(port, () => console.log('Listening on port 8000!'))
