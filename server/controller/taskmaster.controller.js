@@ -1,7 +1,7 @@
 const TaskMaster = require('../model/taskmaster.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
-const { secret } = require('../config/jwt.config');
+
 
 module.exports = {
     register: (req, res) => {
@@ -53,7 +53,15 @@ module.exports = {
     logout: (req, res) => {
         res.clearCookie('master');
         res.json({ message: 'You are logged out!' })
+    },
+
+    getAll: (req,res) => {
+        TaskMaster.findOne({_id: request.params.id})
+        .then(tm=> res.json(tm))
+        .catch(err=> res.json(err))
     }
+
+
 
 }
 
