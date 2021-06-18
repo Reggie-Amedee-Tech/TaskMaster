@@ -9,7 +9,7 @@ const SignUp = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [errors, setErros] = useState({});
+    const [errors, setErrors] = useState({});
 
     const register = (e) => {
         e.preventDefault()
@@ -24,11 +24,12 @@ const SignUp = () => {
             setImageUrl('');
             setPassword('');
             setConfirmPassword('');
+            navigate('/create');
             
         })
         .catch(err=> {
             console.log(err);
-            
+            setErrors(err.response.data.errors);
         })
     }
 
@@ -83,9 +84,11 @@ const SignUp = () => {
                 
             </form>
             
+            
         </fieldset>
 
     )
+    
 }
 
 export default SignUp;

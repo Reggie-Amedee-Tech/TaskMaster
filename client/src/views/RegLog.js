@@ -1,9 +1,16 @@
 import SignUp from '../components/SignUp';
+import LogIn from '../components/LogIn'
 
 const RegLog = () => {
 
-    return(
-        <SignUp/>
+    return (
+        <div style={{display: "flex",
+        justifyContent: "space-around"}}>
+
+            <SignUp />
+            <LogIn />
+        </div>
+
     )
 }
 

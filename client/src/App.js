@@ -10,9 +10,9 @@ function App() {
     <div className="App">
       <Router>
         <RegLog path='/register'/>
-        {/* <MainTaskPage path='/create'/>
+        <MainTaskPage path='/create'/>
         <DetailedTask path='/task/:id'/>
-        <UpdateTask path='/task/:id/edit'/> */}
+        <UpdateTask path='/task/:id/edit'/>
       </Router>
 
     </div>

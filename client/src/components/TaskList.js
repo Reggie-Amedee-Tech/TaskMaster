@@ -15,7 +15,7 @@ const TaskList = (props) => {
         axios.delete('http://localhost:8000/api/task/' + taskId)
         .then(res=> {
             removeFromDom(taskId)
-        })
+        }, [])
     }
 
 
@@ -26,7 +26,7 @@ const TaskList = (props) => {
                 setTasks(res.data)
                 setLoaded(true)
             })
-    })
+    },[])
 
     return (
         <div>
