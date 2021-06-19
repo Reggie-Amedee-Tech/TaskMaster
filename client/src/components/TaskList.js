@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router'
+import io from 'socket.io-client';
 
 
 const TaskList = (props) => {
     const [tasks, setTasks] = useState([]);
     const [loaded, setLoaded] = useState("");
+    const [socket] = useState(()=> io(':8000'));
 
     const removeFromDom = (taskId) => {
         setTasks(tasks.filter(task=> task._id !== taskId));
@@ -18,7 +20,15 @@ const TaskList = (props) => {
         }, [])
     }
 
+useEffect(() => {
+console.log('inside of useEffect for socket');
 
+socket.on('task_added', (data) => {
+setTasks((currentAllTasksValue) => {
+    return [data, ...currentAllTasksValue]
+})
+})
+}, [])
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/task/all')

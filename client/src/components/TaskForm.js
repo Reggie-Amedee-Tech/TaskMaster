@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-
 import axios from 'axios'
+import io from 'socket.io-client';
 
 const TaskForm = () => {
     const [taskName, setTaskName] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
     const [date, setDate] = useState("");
+    const [socket] = useState(() => io(':8000'))
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -15,7 +16,12 @@ const TaskForm = () => {
             taskDescription,
             date
         })
-        .then(res=> console.log(res))
+        .then(res=> {
+            
+            console.log(res)
+            socket.emit('task_created', res.data)
+            
+        })
         .catch(err => console.log(err))
     }
 
