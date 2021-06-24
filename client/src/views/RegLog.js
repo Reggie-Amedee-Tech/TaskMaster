@@ -4,6 +4,7 @@ import LogIn from '../components/LogIn'
 const RegLog = () => {
 
     return (
+
         <div style={{display: "flex",
         justifyContent: "space-around"}}>
 

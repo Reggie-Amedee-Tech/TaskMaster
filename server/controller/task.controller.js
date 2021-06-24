@@ -1,7 +1,10 @@
 const Task = require('../model/task.model');
+const jwt = require('jsonwebtoken');
 
 module.exports.createTask = (request, response) => {
     const { taskName, taskDescription, date } = request.body;
+    const decodedJwt = jwt.decode('tmtoken',{complete: true});
+    
     Task.create({
         taskName,
         taskDescription,

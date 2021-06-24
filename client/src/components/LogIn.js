@@ -9,7 +9,9 @@ const LogIn = () => {
 
     const login = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/taskmaster/login',
+        axios.post(
+            'http://localhost:8000/api/taskmaster/login',
+            
 
             { email, password },
             { withCredentials: true }
@@ -29,23 +31,41 @@ const LogIn = () => {
 
 
     return (
-        <fieldset>
-            <legend>Log In</legend>
+        
+            
             <form onSubmit={login}>
+                <table>
+
+                
+                <h1>Please Log In!</h1>
+                <tr>
+
+                <label>Email:</label>
                 <div>
+                    
+                
                     <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <label>Email:</label>
+                    
                 </div>
+                </tr>
+                <tr>
+
+                <label>Password:</label>
                 <div>
+                
                     <input type='text' value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <label>Password:</label>
+                    
                 </div>
-
-
-                <input type="submit" />
                 <p className='error message'>{errorMessage ? errorMessage : ""}</p>
+                </tr>
+
+                <input type="submit" style={{width:"90px",
+            alignSelf: "center"}} />
+            </table>
+                
+                
             </form>
-        </fieldset>
+        
 
     )
 }

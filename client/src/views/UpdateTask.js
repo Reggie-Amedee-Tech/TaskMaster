@@ -27,7 +27,7 @@ const UpdateTask = (props) => {
             .then(res => {
                 console.log(res)
                 navigate('/task/' + id)
-            })
+            }, [])
     }
 
     return (

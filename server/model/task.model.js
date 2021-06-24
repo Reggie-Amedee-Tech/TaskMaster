@@ -9,6 +9,11 @@ const TaskSchema = new mongoose.Schema({
     },
     date: {
         type: String,
+    },
+
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'TaskMaster'
     }
 }, {timestamps: true})
 

@@ -6,7 +6,7 @@ const socketio = require('socket.io');
 const port = process.env.MY_PORT
 const cookieParser = require('cookie-parser');
 
-require('./config/mongoose.config');
+require('./config/mongoose.config')
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

@@ -1,0 +1,16 @@
+.profilePicture{
+    width: 100px;
+    height: 100px;
+}
+
+.homepageTable{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.homepageFooter{
+    display: flex;
+    flex-direction: column;
+}
+
