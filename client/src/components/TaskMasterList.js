@@ -4,10 +4,22 @@ import io from 'socket.io-client'
 import './styles.css'
 import { navigate } from '@reach/router';
 
-const TaskMasterList = () => {
+const TaskMasterList = (props) => {
     const [taskMasters, setTaskMasters] = useState({});
     const [loaded, setLoaded] = useState('');
     const [socket] = useState(() => io(':8000'))
+    const {hName} = props;
+
+    const logout = (e) => {
+        e.preventDefault();
+
+        axios.post('http://localhost:8000/api/taskmaster/logout', {}, { withCredentials: true })
+            .then(res => {
+                console.log('You have successfully logged out!')
+                navigate('/register')
+            })
+            .catch(err => console.log(err))
+    }
 
 
     useEffect(() => {
@@ -30,8 +42,24 @@ const TaskMasterList = () => {
         return () => socket.disconnect()
     }, [socket])
     return (
+
         <div>
-            <h1>Welcome to Task World!</h1>
+            <ul style={{
+                display: 'flex',
+                listStyleType: "none", justifyContent: "space-evenly", borderStyle: 'solid'
+            }}>
+                <li>
+                    <h1>Welcome Task Master</h1>
+                </li>
+                <li>
+                    <h1>{hName}</h1>
+                </li>
+
+            </ul>
+
+        
+        <div>
+            
             {loaded && taskMasters.map((taskmaster, i) => {
                 return <div  classname="homepageTable" style={{ border: '1px solid', marginTop:'20px' }}>
                     <table key={i} style={{width:'100%'}}>
@@ -56,11 +84,11 @@ const TaskMasterList = () => {
                     <h1 onClick={()=> navigate('/create')}>Task</h1>
                 </li>
                 <li>
-                <h1 onClick={()=> {localStorage.clear('tmtoken')
-                navigate('/register')}}>Logout</h1>
+                <h1 onClick={logout}>Logout</h1>
                 </li>
             </ul>
             </div>
+        </div>
         </div>
     )
 }

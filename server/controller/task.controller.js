@@ -3,19 +3,22 @@ const jwt = require('jsonwebtoken');
 
 module.exports.createTask = (request, response) => {
     const { taskName, taskDescription, date } = request.body;
-    const decodedJwt = jwt.decode('tmtoken',{complete: true});
-    
+    const decodedJwt = jwt.decode(request.cookies.tmtoken,{complete: true});
+    const userId = decodedJwt.payload.userId
     Task.create({
         taskName,
         taskDescription,
-        date
+        date,
+        createdBy: userId
     })
     .then(task=> response.json(task))
     .catch(err=> response.json(err))
 }
 
 module.exports.showAllTasks = (request, response) => {
-    Task.find({})
+    const decodedJwt = jwt.decode(request.cookies.tmtoken,{complete: true});
+    const userId = decodedJwt.payload.userId
+    Task.find({createdBy: userId })
     .then(res=> response.json(res))
     .catch(err=> response.json(err))
 }

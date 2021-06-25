@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 
-const LogIn = () => {
+const LogIn = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('')
+    const {setHName} = props;
 
     const login = (e) => {
         e.preventDefault();
@@ -17,8 +18,10 @@ const LogIn = () => {
             { withCredentials: true }
         )
             .then(res => {
-                console.log(res)
+                console.log(res.data.taskmasterLogged.name)
+                setHName(res.data.taskmasterLogged.name)
                 navigate('/create')
+                
             }
 
             )

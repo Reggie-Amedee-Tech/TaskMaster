@@ -15,7 +15,7 @@ const UpdateTask = (props) => {
                 setTaskDescription(res.data.taskDescription)
                 setDate(res.data.date)
             })
-    }, [])
+    }, [id])
 
     const updateTask = (e) => {
         e.preventDefault();

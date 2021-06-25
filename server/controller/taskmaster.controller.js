@@ -60,8 +60,9 @@ module.exports = {
                                 res
                                     .cookie(
                                         'tmtoken',
-                                        jwt.sign({ 
-                                            userId: taskmaster.userId, name: taskmaster.name }, process.env.JWT_SECRET),
+                                        jwt.sign({
+                                            userId: taskmaster._id, name: taskmaster.name
+                                        }, process.env.JWT_SECRET),
                                         {
                                             httpOnly: true,
                                             expires: new Date(Date.now() + 900000)
@@ -69,7 +70,7 @@ module.exports = {
                                     )
                                     .json({
                                         msg: 'Success',
-                                        tasmmasterLogged: {
+                                        taskmasterLogged: {
                                             name: taskmaster.name
                                         }
                                     })
@@ -86,7 +87,7 @@ module.exports = {
 
 
     logout: (req, res) => {
-        res.clearCookie('tmToken');
+        res.clearCookie('tmtoken');
         res.json({ message: 'You are logged out!' })
     },
 

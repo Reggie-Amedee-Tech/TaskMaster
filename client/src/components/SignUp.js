@@ -22,6 +22,7 @@ const SignUp = () => {
                 setImageUrl('');
                 setPassword('');
                 setConfirmPassword('');
+                navigate('/create')
 
             })
             .catch(err => {

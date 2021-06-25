@@ -1,9 +1,10 @@
 import TaskMasterList from '../components/TaskMasterList'
 
-const HomePage = () => {
+const HomePage = (props) => {
+    const {hName} = props;
 
     return(
-        <TaskMasterList/>
+        <TaskMasterList hName={hName}/>
     )
 }
 

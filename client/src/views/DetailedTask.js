@@ -8,7 +8,7 @@ const DetailedTask = (props) => {
     const [task, setTask] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/task/' + props.id)
+        axios.get('http://localhost:8000/api/task/' + props.id,{withCredentials: true})
             .then(res => setTask({
                 ...res.data
             }))
@@ -55,10 +55,7 @@ const DetailedTask = (props) => {
                 <li>
                     <h1 onClick={()=> navigate('/create')}>Task</h1>
                 </li>
-                <li>
-                <h1 onClick={()=> {localStorage.clear('tmtoken')
-                navigate('/register')}}>Logout</h1>
-                </li>
+                
             </ul>
         </div>
 
