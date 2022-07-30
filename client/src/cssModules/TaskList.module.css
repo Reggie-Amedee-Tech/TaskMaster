@@ -1,0 +1,42 @@
+.div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 3px solid purple;
+    margin-top: 10px;
+    width: 200px;
+}
+
+.TaskListContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.tablehead {
+    border-bottom: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #228B22;
+    font-size: large;
+    box-shadow: 3px 3px;
+}
+
+.button:hover {
+    background-color: #4F7942;
+}
+
+.button:active {
+    background-color: #4F7942;
+    box-shadow: 0px 0px;;
+}

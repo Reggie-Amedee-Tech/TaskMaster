@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router'
 import io from 'socket.io-client';
+import classes from '../cssModules/TaskList.module.css'
 
 
 const TaskList = (props) => {
@@ -41,25 +42,30 @@ const TaskList = (props) => {
                 setTasks(res.data)
                 setLoaded(true)
             })
-            .catch((err) => {console.log(JSON.stringify(err))
-            console.log(err.status)
+            .catch((err) => {
+                console.log(JSON.stringify(err))
+                console.log(err.status)
             })
     }, [])
 
     return (
         <div>
             <h1>List Of Tasks!</h1>
-
-
             {loaded && tasks.map((task, i) => {
-                return <div key={i}>
-                    <Link to={"/task/" + task._id} >{task.taskName}</Link>
-                    <button onClick={(e) => deleteTask(task._id)}>Complete Task</button>
+                return <div key={i} className={classes.Div}>
+                    <table className={classes.table}>
+                        <div className={classes.TaskListContainer}>
+                        <tr className={classes.tablehead}>
+                            <Link to={"/task/" + task._id} className={classes.tablehead}>{task.taskName}</Link>
+                        </tr>
+                        <td className={classes.tabledata}>
+                            <button onClick={(e) => deleteTask(task._id)} className={classes.button}>Complete Task</button>
+                        </td>
+                        </div>
+                    </table>
                 </div>
-
             })}
         </div>
-
     )
 
 }

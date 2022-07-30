@@ -15,21 +15,23 @@
     max-width: 1200px;
     width: 90%;
     height: 100vh;
-    border: red dotted 1px;
+    
 }
 
 .Header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 50px;
+    border-bottom: 5px solid black;
 }
 
 .RegLogSection {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: blue dotted 1px;
     height: 80vh;
     align-items: center;
+    width: 100%;
 }
 

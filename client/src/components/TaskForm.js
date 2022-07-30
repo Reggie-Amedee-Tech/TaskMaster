@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import io from 'socket.io-client';
-
+import classes from '../cssModules/TaskForm.module.css'
 
 const TaskForm = () => {
     const [taskName, setTaskName] = useState("");
@@ -11,14 +11,14 @@ const TaskForm = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        
 
-        axios.post('http://localhost:8000/api/task' , {
+
+        axios.post('http://localhost:8000/api/task', {
             taskName,
             taskDescription,
             date
         },
-        {withCredentials: true})
+            { withCredentials: true })
             .then(res => {
 
                 console.log(res)
@@ -32,36 +32,49 @@ const TaskForm = () => {
     return (
         <form onSubmit={onSubmitHandler}>
             <h1>Add New Task!</h1>
-            <div>
+            <div className={classes.Div}>
+                <table className={classes.table}>
+                    <tr>
+                        <th className={classes.tablehead}>Task Name</th>
+                        <th className={classes.tablehead}>Task Description</th>
+                        <th className={classes.tablehead3}>Task Date</th>
+                    </tr>
+
+                    <tr>
+                        <td className={classes.tabledata}><input
+                            type='text'
+                            value={taskName}
+                            onChange={(e) => setTaskName(e.target.value)}
+                            placeholder="Input Task name"
+                            className={classes.input}>
+                        </input></td>
+                        <td className={classes.tabledata}><input
+                            type='text'
+                            value={taskDescription}
+                            onChange={(e) => setTaskDescription(e.target.value)}
+                            placeholder="Input Task description"
+                            className={classes.input}>
+                        </input></td>
+                        <td className={classes.tabledata3}><input
+                            type='date'
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                            placeholder="Select Task date"
+                            className={classes.input}>
+                        </input></td>
+                    </tr>
 
 
-                <div>
-                    <p>
-                        <label>Task Name: <br /></label>
-                        <input type="text" onChange={(e) => setTaskName(e.target.value)} value={taskName} />
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <label>Task Description: <br /></label>
-                        <input type="text" onChange={(e) => setTaskDescription(e.target.value)} value={taskDescription} />
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <label>Task Date: <br /></label>
-                        <input type="date" onChange={(e) => setDate(e.target.value)} value={date} required pattern="\d{4}-d{2}-\d{2}" />
-                    </p>
-                </div>
-                
+
+                </table>
             </div>
-            <button type="submit">Submit Task!</button>
+            <button type="submit" className={classes.button}>Submit Task!</button>
 
-            
+
 
         </form>
 
-    
+
 
     )
 
