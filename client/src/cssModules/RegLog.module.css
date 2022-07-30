@@ -1,0 +1,36 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.HomePageDiv {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+    height: 100vh;
+    border: red dotted 1px;
+    
+}
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.RegLogSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: blue dotted 1px;
+    height: 80vh;
+    align-items: center;
+}
+
