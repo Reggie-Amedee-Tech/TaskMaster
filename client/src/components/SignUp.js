@@ -6,20 +6,19 @@ const SignUp = () => {
     const [name, setName] = useState('');
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState({});
 
     const register = (e) => {
         e.preventDefault()
-        const newTaskMaster = { name, userId, email, imageUrl, password, confirmPassword };
+        const newTaskMaster = { name, userId, email, password, confirmPassword };
         axios.post('http://localhost:8000/api/taskmaster/register', newTaskMaster, { withCredentials: true })
             .then(res => {
                 console.log(res);
                 setName('');
                 setUserId('');
-                setImageUrl('');
+                
                 setPassword('');
                 setConfirmPassword('');
                 navigate('/create')
@@ -68,15 +67,6 @@ const SignUp = () => {
                         <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
                         {errors.email ?
                             <p>{errors.email.message}</p>
-                            : null}
-                    </div>
-                </tr>
-                <tr>
-                    <label>imageUrl: </label>
-                    <div>
-                        <input type="text" onChange={(e) => setImageUrl(e.target.value)} value={imageUrl} />
-                        {errors.imageUrl ?
-                            <p>{errors.imageUrl.message}</p>
                             : null}
                     </div>
                 </tr>
