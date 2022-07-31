@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { navigate } from '@reach/router'
-
+import classes from '../cssModules/DetailedTasksPage.module.css'
 
 
 const DetailedTask = (props) => {
@@ -14,33 +14,29 @@ const DetailedTask = (props) => {
             }))
     })
     return (
-        <div>
-        <div style={{display:'flex',justifyContent:'center'}}>
+        <>
+        <div className={classes.div}>
+            <div className={classes.Container}>
+
             
-            <div>
-                <table style={{border:'1px solid' }}>
+            <table className={classes.table}>
+                <tbody>
                     <tr >
-                        <th style={{border:'1px solid' }}><h3>Task Name:</h3></th>
-                        <th style={{border:'1px solid' }}><h3>Task Description:</h3></th>
-                        <th style={{border:'1px solid' }}><h3>Task Date:</h3></th>
+                        <th className={classes.tablehead}>Task Name</th>
+                        <th className={classes.tablehead}>Task Description</th>
+                        <th className={classes.tablehead3}>Task Date</th>
                     </tr>
                     <tr>
-                        <td style={{border:'1px solid' }}>{task.taskName}</td>
-                        <td style={{border:'1px solid' }}>{task.taskDescription}</td>
-                        <td style={{border:'1px solid' }}>{task.date}</td>
+                        <td className={classes.tabledata}>{task.taskName}</td>
+                        <td className={classes.tabledata}>{task.taskDescription}</td>
+                        <td className={classes.tabledata3}>{task.date}</td>
                     </tr>
-                </table>
-                <button style={{marginTop:'20px'}}onClick={() => navigate('/task/' + task._id + '/edit')}>Edit</button>
+                </tbody>
+            </table>
             </div>
+            <button onClick={() => navigate('/task/' + task._id + '/edit')} className={classes.button}>Edit</button>
         </div>
-        <ul style={{display: 'flex',
-        listStyleType:"none", justifyContent: "space-evenly", borderStyle: 'solid'}}>
-                <li>
-                    <h1 onClick={()=> navigate('/create')}>Task</h1>
-                </li>
-                
-            </ul>
-        </div>
+    </>
     )
 }
 

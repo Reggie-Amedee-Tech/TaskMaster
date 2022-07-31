@@ -1,6 +1,7 @@
 import { navigate } from '@reach/router';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import classes from '../cssModules/TaskForm.module.css'
 
 const UpdateTask = (props) => {
     const [taskName, setTaskName] = useState();
@@ -32,28 +33,43 @@ const UpdateTask = (props) => {
 
     return (
         <form onSubmit={updateTask}>
-            <div>
-                <p>
-                    <label>Task Name: <br /></label>
-                    <input type="text" name ="taskName" onChange={(e) => {setTaskName(e.target.value)}} value={taskName} />
-                </p>
-            </div>
-            <div>
-                <p>
-                    <label>Task Description: <br /></label>
-                    <input type="text" name="taskDescription" onChange={(e) => {setTaskDescription(e.target.value)}} value={taskDescription} />
-                </p>
-            </div>
-            <div>
-                <p>
-                    <label>Task Date: <br /></label>
-                    <input type="date"  name="date" onChange={(e) => {setDate(e.target.value)}} value={date} required pattern="\d{4}-d{2}-\d{2}" />
-                </p>
-            </div>
-            <button type="submit">Update Task</button>
+            <h1>Edit Task</h1>
+            <div className={classes.Div}>
+                <table className={classes.table}>
+                    <tr>
+                        <th className={classes.tablehead}>Task Name</th>
+                        <th className={classes.tablehead}>Task Description</th>
+                        <th className={classes.tablehead3}>Task Date</th>
+                    </tr>
 
+                    <tr>
+                        <td className={classes.tabledata}><input
+                            type='text'
+                            value={taskName}
+                            onChange={(e) => setTaskName(e.target.value)}
+                            placeholder="Input Task name"
+                            className={classes.input}>
+                        </input></td>
+                        <td className={classes.tabledata}><input
+                            type='text'
+                            value={taskDescription}
+                            onChange={(e) => setTaskDescription(e.target.value)}
+                            placeholder="Input Task description"
+                            className={classes.input}>
+                        </input></td>
+                        <td className={classes.tabledata3}><input
+                            type='date'
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                            placeholder="Select Task date"
+                            className={classes.input}>
+                        </input></td>
+                    </tr>
+                </table>
+            </div>
+            <button type="submit" className={classes.button}>Update Task</button>
         </form>
-
+        
     )
 }
 

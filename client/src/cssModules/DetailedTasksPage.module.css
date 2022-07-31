@@ -1,0 +1,60 @@
+.div {
+    width: 100%;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 3px solid purple;
+}
+
+
+.tablehead {
+    border-bottom: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+    border-right: 2px solid black;
+}
+
+.tablehead3 {
+    border-bottom: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 10px;
+}
+
+.tabledata {
+    border-right: 2px solid black;
+    padding: 5px;
+}
+
+.tabledata3 {
+    padding: 5px;
+}
+
+.button {
+    margin-top: 10px;
+    background-color: #228B22;
+    font-size: large;
+    box-shadow: 3px 3px;
+    width: 200px;
+}
+
+.button:hover {
+    background-color: #4F7942;
+}
+
+.button:active {
+    background-color: #4F7942;
+    box-shadow: 0px 0px;;
+}
