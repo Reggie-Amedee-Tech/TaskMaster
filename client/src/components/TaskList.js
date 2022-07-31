@@ -44,7 +44,6 @@ const TaskList = (props) => {
             })
             .catch((err) => {
                 console.log(JSON.stringify(err))
-                console.log(err.status)
             })
     }, [])
 

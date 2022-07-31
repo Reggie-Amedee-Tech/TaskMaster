@@ -17,8 +17,8 @@ const LogIn = (props) => {
             { withCredentials: true }
         )
             .then(res => {
-                console.log(res.data.taskmasterLogged.name)
-                setHName(res.data.taskmasterLogged.name)
+                console.log(res.data)
+                setHName(res.data)
                 navigate('/create')
             }
             )

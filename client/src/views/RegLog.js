@@ -11,7 +11,7 @@ const RegLog = (props) => {
                     <h1>Become a Task Master today!</h1>
                 </div>
                 <div className={classes.RegLogSection}>
-                    <SignUp />
+                    <SignUp setHName={setHName}/>
                     <LogIn setHName={setHName} />
                 </div>
             </div>

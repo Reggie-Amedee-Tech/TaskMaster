@@ -25,9 +25,6 @@ const MainTaskPage = (props) => {
                 <li>
                     <h1>Welcome Task Master</h1>
                 </li>
-                <li>
-                    <h1>{hName}</h1>
-                </li>
             </ul>
             <div className={classes.MidContent}>
                 

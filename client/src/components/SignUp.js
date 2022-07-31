@@ -3,13 +3,16 @@ import { navigate } from '@reach/router';
 import axios from 'axios';
 import classes from '../cssModules/SignUp.module.css'
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [name, setName] = useState('');
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState({});
+    const [successfullSignin, setSuccessfullSignin] = useState(false)
+
+    const { setHName } = props;
 
     const register = (e) => {
         e.preventDefault()
@@ -19,11 +22,10 @@ const SignUp = () => {
                 console.log(res);
                 setName('');
                 setUserId('');
-
                 setPassword('');
+                setEmail('')
                 setConfirmPassword('');
-                navigate('/create')
-
+                setSuccessfullSignin(true)
             })
             .catch(err => {
                 console.log(err);
@@ -41,7 +43,7 @@ const SignUp = () => {
                         <td className={classes.TableData}>
                             <label className={classes.FormLabel}>Name:</label>
                             <div>
-                                <input type="text" onChange={(e) => setName(e.target.value)} value={name}  className={classes.Input}/>
+                                <input type="text" onChange={(e) => setName(e.target.value)} value={name} className={classes.Input} />
                                 {errors.name ?
                                     <p>{errors.name.message}</p>
                                     : null}
@@ -50,51 +52,58 @@ const SignUp = () => {
                     </tr>
                     <tr>
                         <td className={classes.TableData}>
-                        <label className={classes.FormLabel}>UserId: </label>
-                        <div>
-                            <input type="text" onChange={(e) => setUserId(e.target.value)} value={userId}  className={classes.Input}/>
-                            {errors.userId ?
-                                <p>{errors.userId.message}</p>
-                                : null}
-                        </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className={classes.TableData}>                        
-                        <label className={classes.FormLabel}>Email: </label>
-                        <div>
-                            <input type="text" onChange={(e) => setEmail(e.target.value)} value={email}  className={classes.Input}/>
-                            {errors.email ?
-                                <p>{errors.email.message}</p>
-                                : null}
-                        </div>
+                            <label className={classes.FormLabel}>UserId: </label>
+                            <div>
+                                <input type="text" onChange={(e) => setUserId(e.target.value)} value={userId} className={classes.Input} />
+                                {errors.userId ?
+                                    <p>{errors.userId.message}</p>
+                                    : null}
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td className={classes.TableData}>
-                        <label className={classes.FormLabel}>Password: </label>
-                        <div>
-                            <input type="text" onChange={(e) => setPassword(e.target.value)} value={password}  className={classes.Input}/>
-                            {errors.password ?
-                                <p>{errors.password.message}</p>
-                                : null}
-                        </div>
+                            <label className={classes.FormLabel}>Email: </label>
+                            <div>
+                                <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} className={classes.Input} />
+                                {errors.email ?
+                                    <p>{errors.email.message}</p>
+                                    : null}
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td className={classes.TableData}>
-                        <label className={classes.FormLabel}>Confirm Password: </label>
-                        <div>
-                            <input type="text" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword}  className={classes.Input}/>
-                            {errors.confirmPassword ?
-                                <p style={{ color: "red" }}>{errors.confirmPassword.message}</p>
-                                : null}
-                        </div>
+                            <label className={classes.FormLabel}>Password: </label>
+                            <div>
+                                <input type="text" onChange={(e) => setPassword(e.target.value)} value={password} className={classes.Input} />
+                                {errors.password ?
+                                    <p>{errors.password.message}</p>
+                                    : null}
+                            </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td className={classes.TableData}>
+                            <label className={classes.FormLabel}>Confirm Password: </label>
+                            <div>
+                                <input type="text" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} className={classes.Input} />
+                                {errors.confirmPassword ?
+                                    <p style={{ color: "red" }}>{errors.confirmPassword.message}</p>
+                                    : null}
+                            </div>
+                        </td>
+                    </tr>
+                    {successfullSignin &&
+                        <tr>
+                            <td>
+                                <h1>Successfully registered! Please sign in!</h1>
+                            </td>
+                        </tr>
+                    }
                     <tr className={classes.TableData}>
                         <td>
-                        <input type='submit' className={classes.Button}></input>
+                            <input type='submit' className={classes.Button}></input>
                         </td>
                     </tr>
                 </table>

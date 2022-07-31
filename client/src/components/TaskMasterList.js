@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import io from 'socket.io-client'
 import { navigate } from '@reach/router';
+import classes from '../cssModules/Homepage.module.css'
+import defaultImg from '../assets/default-img.jpg'
+
 
 const TaskMasterList = (props) => {
     const [taskMasters, setTaskMasters] = useState({});
     const [loaded, setLoaded] = useState('');
     const [socket] = useState(() => io(':8000'))
-    const {hName} = props;
+    const { hName } = props;
 
     const logout = (e) => {
         e.preventDefault();
@@ -20,7 +23,6 @@ const TaskMasterList = (props) => {
             .catch(err => console.log(err))
     }
 
-
     useEffect(() => {
         axios.get('http://localhost:8000/api/welcome', {
             withCredentials: true
@@ -30,7 +32,6 @@ const TaskMasterList = (props) => {
                 setLoaded(true)
             })
     }, [])
-
     useEffect(() => {
         console.log('inside of useEffect for socket');
         socket.on('task_added', (data) => {
@@ -40,55 +41,35 @@ const TaskMasterList = (props) => {
         })
         return () => socket.disconnect()
     }, [socket])
+
+    console.log(taskMasters)
+
     return (
-
-        <div>
-            <ul style={{
-                display: 'flex',
-                listStyleType: "none", justifyContent: "space-evenly", borderStyle: 'solid'
-            }}>
-                <li>
-                    <h1>Welcome Task Master</h1>
-                </li>
-                <li>
-                    <h1>{hName}</h1>
-                </li>
-
-            </ul>
-
-        
-        <div>
-            
-            {loaded && taskMasters.map((taskmaster, i) => {
-                return <div  classname="homepageTable" style={{ border: '1px solid', marginTop:'20px' }}>
-                    <table key={i} style={{width:'100%'}}>
-                        <tr>
-                            <th style={{border: '1px solid'}}>TaskMaster</th>
-                            <th style={{border: '1px solid'}}>Profile Picture</th>
-                        </tr>
-                        <tr>
-                            <td style={{border: '1px solid'}}>
-                                {taskmaster.userId} created a new Task!
-                            </td>
-                            <td style={{border: '1px solid'}}><img className="profilePicture" src={taskmaster.imageUrl} alt="img"></img></td>
-                        </tr>
-                    </table>
+        <>
+        <div className={classes.Div}>
+            <div className={classes.Container}>
+        <div className={classes.Header}>
+                    <h1>Welcome To Task World</h1>
+                    
                 </div>
-                
-            })}
-            <div>
-            <ul style={{display: 'flex',
-        listStyleType:"none", justifyContent: "space-evenly", borderStyle: 'solid'}}>
-                <li>
-                    <h1 onClick={()=> navigate('/create')}>Task</h1>
-                </li>
-                <li>
-                <h1 onClick={logout}>Logout</h1>
-                </li>
-            </ul>
-            </div>
+        {loaded && taskMasters.map(taskMaster => {
+            return <div className={classes.Taskcard}>
+                    <div>
+                        <h1>{taskMaster.userId}</h1>
+                        <img src={defaultImg} alt="default_pic_icon" className={classes.Img}></img>
+                    </div>
+                    <h1>Task Created!</h1>
+        </div>
+        
+        })}
+        </div>
+        <div className={classes.Footer}>
+            <h1 onClick={()=> navigate('/create')}>Create Task</h1>
+            <h1 onClick={logout}>Logout</h1>
         </div>
         </div>
+        </>
+        
     )
 }
 
