@@ -43,6 +43,7 @@ const TaskMasterList = (props) => {
     }, [socket])
 
     console.log(taskMasters)
+    console.log(hName.taskmasterLogged.name)
 
     return (
         <>
@@ -50,7 +51,7 @@ const TaskMasterList = (props) => {
             <div className={classes.Container}>
         <div className={classes.Header}>
                     <h1>Welcome To Task World</h1>
-                    
+                    <h1>{hName.taskmasterLogged.name}</h1>
                 </div>
         {loaded && taskMasters.map(taskMaster => {
             return <div className={classes.Taskcard}>

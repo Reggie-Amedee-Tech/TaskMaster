@@ -16,32 +16,28 @@ const MainTaskPage = (props) => {
             .catch(err => console.log(err))
     }
 
+    const name = JSON.stringify(hName.taskmasterLogged.name)
+    console.log(hName)
+
     return (
         <div className={classes.MainTaskPageDiv}>
             <div className={classes.Container}>
-
-            
-            <ul className={classes.Header}>
-                <li>
-                    <h1>Welcome Task Master</h1>
-                </li>
-            </ul>
-            <div className={classes.MidContent}>
-                
+                <ul className={classes.Header}>
+                    <li><h1>Welcome Task Master</h1></li>
+                    <li><h1>{name.slice(1, 7)}</h1></li>
+                </ul>
+                <div className={classes.MidContent}>
                     <TaskForm />
-                
-                
                     <TaskList />
-                
-            </div>
-            <ul className={classes.Footer}>
-                <li>
-                    <h1 onClick={() => navigate('/homepage')}>Home</h1>
-                </li>
-                <li>
-                    <h1 onClick={logout}>Logout</h1>
-                </li>
-            </ul>
+                </div>
+                <ul className={classes.Footer}>
+                    <li>
+                        <h1 onClick={() => navigate('/homepage')}>Home</h1>
+                    </li>
+                    <li>
+                        <h1 onClick={logout}>Logout</h1>
+                    </li>
+                </ul>
             </div>
         </div>
     )
