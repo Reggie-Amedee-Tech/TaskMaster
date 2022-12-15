@@ -21,16 +21,14 @@ This is a task management application with social media-lite features. Keep trac
 ## Technologies Used 
 
 Utilized a MERN stack to build app
-
 * MongoDB/Mongoose
 * Express.js
 * React.js
 * Node.js
 
 Other Technologies Used
-
 * Axios
-* Heroku
+* Socket.io
 
 ## Planning Process
 * Started with back-end application then worked on the front-end
